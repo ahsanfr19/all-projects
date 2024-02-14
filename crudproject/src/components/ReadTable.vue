@@ -15,7 +15,13 @@
         <td>{{ post.title }}</td>
         <td>{{ post.body }}</td>
         <td>
-          <button>Update</button>
+          <button>
+            <router-link
+              @click="getPost"
+              :to="{ name: 'update', params: { id: post.id } }"
+              >Update</router-link
+            >
+          </button>
           <button>Delete</button>
         </td>
       </tr>
@@ -40,6 +46,10 @@ export default {
     addPostToPostsArray(newPost) {
       // Add the new post to the posts array
       this.posts.push(newPost);
+      console.log(this.posts);
+    },
+    getPost() {
+      this.$emit("post-array", this.post);
     },
   },
 };

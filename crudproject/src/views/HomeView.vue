@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <ReadTable />
+    <ReadTable @post-array="getPost" />
   </div>
 </template>
 
@@ -9,8 +9,19 @@
 import ReadTable from "@/components/ReadTable.vue";
 export default {
   name: "HomeView",
+  data() {
+    return {
+      post: [],
+    };
+  },
   components: {
     ReadTable,
+  },
+  methods: {
+    getPost(post) {
+      this.post = post;
+      console.log(this.post);
+    },
   },
 };
 </script>
